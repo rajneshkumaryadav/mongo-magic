@@ -3,32 +3,32 @@ import { menuData } from './menuData.js';
 export const levels = [
   {
     id: 1,
-    title: "Find All Menu Items",
-    description: "Welcome to Mario's Restaurant! Let's start by finding all menu items.",
+    title: "The Grand Opening",
+    description: "Welcome to MongoBistro! 🎉 Chef Raju just opened the restaurant and wants to check the full menu. Help him display everything that’s currently in the kitchen.",
     task: "Find all items in the menu collection",
     correctQuery: "db.menu.find({})",
     expectedResult: menuData,
-    hint: "Use db.menu.find({}) to get all documents from the collection",
+    hint: "Use db.menu.find({}) to show every dish in the menu",
     points: 100
   },
   {
     id: 2,
-    title: "Filter by Category",
-    description: "A customer wants to see only pizza items.",
-    task: "Find all pizza items",
-    correctQuery: "db.menu.find({category: \"pizza\"})",
-    expectedResult: menuData.filter(item => item.category === "pizza"),
-    hint: "Use {category: \"pizza\"} to filter by category",
+    title: "Thirsty Customer",
+    description: "Someone just walked in and asked for any drinks. Can you check if your menu has anything in the 'drink' category?",
+    task: "Find all drink items",
+    correctQuery: "db.menu.find({category : \"drink\"})",
+    expectedResult: menuData.filter(item => item.category === "drink"),
+    hint: "Use {category: 'drink'} to filter the menu",
     points: 150
   },
   {
     id: 3,
-    title: "Price Range Filter",
-    description: "Find budget-friendly options under $12.",
-    task: "Find all items with price less than $12",
-    correctQuery: "db.menu.find({price: {$lt: 12}})",
-    expectedResult: menuData.filter(item => item.price < 12),
-    hint: "Use {price: {$lt: 12}} for less than comparison",
+    title: "Check the Dessert",
+    description: "A sweet-toothed customer asks, 'Do you have Chocolate Cake?' Help the staff confirm this delicious detail!",
+    task: "Find the item Chocolate Cake",
+    correctQuery: "db.menu.findOne({name: \"Chocolate Cake\"})",
+    expectedResult: menuData.find(item => item.name === "Chocolate Cake"),
+    hint: "Use findOne with {name: 'Chocolate Cake'}",
     points: 200
   },
   {
