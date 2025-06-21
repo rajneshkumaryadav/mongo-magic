@@ -34,7 +34,6 @@ function App() {
 
   const currentLevelData = levels[currentLevel - 1];
 
-  // Check for existing player name on component mount
   useEffect(() => {
     const storedName = localStorage.getItem('playerName');
     if (storedName) {
@@ -132,35 +131,36 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-purple-100 p-4">
       <div className="max-w-4xl mx-auto">
         {/* Player Welcome Bar */}
         {playerName && (
-          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-3 rounded-lg mb-4 flex justify-between items-center">
+          <div className="kid-header mb-4 flex justify-between items-center animate-floaty">
             <div>
-              <span className="font-bold text-lg">Welcome back, Chef {playerName}! 👨‍🍳</span>
+              <span className="font-bold text-lg">🎉 Welcome back, Chef {playerName}! 👨‍🍳</span>
             </div>
             <button
               onClick={handleNewPlayer}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 text-black px-3 py-1 rounded text-sm transition-colors duration-200"
+              className="kid-button text-sm py-1 px-3"
             >
-              New Player
+              🔄 New Player
             </button>
           </div>
         )}
-        
-        <GameHeader 
-          currentLevel={currentLevel}
-          totalLevels={levels.length}
-          score={score}
-          lives={lives}
-          streak={streak}
-        />
-        
+
+        <div className="kid-score-box">
+          <GameHeader 
+            currentLevel={currentLevel}
+            totalLevels={levels.length}
+            score={score}
+            lives={lives}
+            streak={streak}
+          />
+        </div>
+
         <LevelInfo level={currentLevelData} />
-        
         <MenuPreview />
-        
+
         <QueryInput
           query={query}
           setQuery={setQuery}
@@ -171,13 +171,17 @@ function App() {
           levelComplete={levelComplete}
           lives={lives}
         />
-        
-        <Feedback
-          feedback={feedback}
-          showHint={showHint}
-          hint={currentLevelData.hint}
-        />
-        
+
+        {feedback && (
+          <div className="kid-feedback">
+            <Feedback
+              feedback={feedback}
+              showHint={showHint}
+              hint={currentLevelData.hint}
+            />
+          </div>
+        )}
+
         <ResultDisplay
           result={currentLevelData.expectedResult}
           levelComplete={levelComplete}

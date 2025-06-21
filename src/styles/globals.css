@@ -1,0 +1,302 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.delay-150 {
+  animation-delay: 0.15s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.kid-header {
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  animation: floaty 2s ease-in-out infinite;
+}
+
+.kid-score-box {
+  background: #ffeaa7;
+  border-left: 6px solid #fdcb6e;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.kid-button {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.kid-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+}
+
+.kid-feedback {
+  background: #ffeaa7;
+  color: #d35400;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  animation: floaty 1s ease-in-out infinite;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(8deg); }
+  75% { transform: rotate(-8deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.4s ease-out forwards;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.8s ease-in-out infinite;
+}
+@keyframes slideIn {
+  0%   { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes popHeart {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggleSlow {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-in-out;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2s ease-in-out infinite;
+}
+
+.animate-pop {
+  animation: popHeart 1s ease-in-out;
+}
+
+.animate-wiggle-slow {
+  animation: wiggleSlow 2s ease-in-out infinite;
+}
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-fade {
+  animation: slideFade 0.7s ease-in-out both;
+}
+/* Already used in other components, reuse if present */
+
+@keyframes slideFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wiggleSlow {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-slide-fade {
+  animation: slideFade 0.6s ease-in-out both;
+}
+
+.animate-wiggle-slow {
+  animation: wiggleSlow 2s ease-in-out infinite;
+}
+
+.animate-pop-in {
+  animation: popIn 0.5s ease-out both;
+}
+@keyframes fadeInFast {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounceInSmooth {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+
+.animate-fade-in-fast {
+  animation: fadeInFast 0.3s ease-out;
+}
+
+.animate-bounce-in-smooth {
+  animation: bounceInSmooth 0.5s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textBlink {
+  0%, 100% {
+    color: #10b981;
+  }
+  50% {
+    color: #22c55e;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-1px); }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggleSlow {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+.animate-slide-fade {
+  animation: slideFade 0.6s ease-in-out both;
+}
+.animate-text-blink {
+  animation: textBlink 1s infinite;
+}
+.animate-pop-in {
+  animation: popIn 0.4s ease-out both;
+}
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+.animate-wiggle-slow {
+  animation: wiggleSlow 2.5s ease-in-out infinite;
+}
+@keyframes slideFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInFast {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-fade {
+  animation: slideFade 0.6s ease-in-out both;
+}
+.animate-pop-in {
+  animation: popIn 0.4s ease-out both;
+}
+.animate-fade-in-fast {
+  animation: fadeInFast 0.4s ease-in-out both;
+}
+@keyframes slideDown {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wiggleSlow {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(4deg); }
+  75% { transform: rotate(-4deg); }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.6s ease-out;
+}
+
+.animate-wiggle-slow {
+  animation: wiggleSlow 2.5s ease-in-out infinite;
+}
