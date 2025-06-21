@@ -24,7 +24,7 @@ const LandingScreen = ({ onStartGame }) => {
         
         <button
           onClick={onStartGame}
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
         >
           <Play className="h-5 w-5" />
           Start Cooking with Queries!

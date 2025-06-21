@@ -1,47 +1,80 @@
 import { useState, useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
 import { levels } from '../data/levels';
 
 export const useGameState = () => {
-  const [gameProgress, setGameProgress] = useLocalStorage('mongoQueryGameProgress', {
-    currentLevel: 1,
-    score: 0,
-    lives: 3,
-    streak: 0
-  });
+  // Get initial state from localStorage
+  const getInitialState = () => {
+    try {
+      const saved = localStorage.getItem('mongoQueryGameProgress');
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (error) {
+      console.error('Error loading game progress:', error);
+    }
+    
+    return {
+      currentLevel: 1,
+      score: 0,
+      lives: 3,
+      streak: 0,
+      playerName: '',
+      lastPlayed: null
+    };
+  };
 
-  const [currentLevel, setCurrentLevel] = useState(gameProgress.currentLevel);
-  const [score, setScore] = useState(gameProgress.score);
-  const [lives, setLives] = useState(gameProgress.lives);
-  const [streak, setStreak] = useState(gameProgress.streak);
+  const [gameState, setGameState] = useState(getInitialState);
+  const [currentLevel, setCurrentLevel] = useState(gameState.currentLevel);
+  const [score, setScore] = useState(gameState.score);
+  const [lives, setLives] = useState(gameState.lives);
+  const [streak, setStreak] = useState(gameState.streak);
 
+  // Save progress to localStorage whenever state changes
   const saveProgress = () => {
-    setGameProgress({
+    const progressData = {
       currentLevel,
       score,
       lives,
       streak,
-      lastPlayed: new Date().toISOString()
-    });
+      playerName: localStorage.getItem('playerName') || '',
+      lastPlayed: new Date().toISOString(),
+      totalPlayTime: gameState.totalPlayTime || 0
+    };
+    
+    try {
+      localStorage.setItem('mongoQueryGameProgress', JSON.stringify(progressData));
+    } catch (error) {
+      console.error('Error saving game progress:', error);
+    }
   };
 
   const resetGame = () => {
     setCurrentLevel(1);
     setScore(0);
-    setLives(3);
+    setLives(5);
     setStreak(0);
-    setGameProgress({
+    
+    // Save the reset state
+    const resetData = {
       currentLevel: 1,
       score: 0,
-      lives: 3,
-      streak: 0
-    });
+      lives: 5,
+      streak: 0,
+      playerName: localStorage.getItem('playerName') || '',
+      lastPlayed: new Date().toISOString(),
+      gamesPlayed: (gameState.gamesPlayed || 0) + 1
+    };
+    
+    try {
+      localStorage.setItem('mongoQueryGameProgress', JSON.stringify(resetData));
+    } catch (error) {
+      console.error('Error saving game progress:', error);
+    }
   };
 
   const nextLevel = () => {
     if (currentLevel < levels.length) {
       setCurrentLevel(prev => prev + 1);
-      saveProgress();
     }
   };
 
@@ -58,9 +91,21 @@ export const useGameState = () => {
     setStreak(prev => prev + 1);
   };
 
+  // Auto-save progress whenever any state changes
   useEffect(() => {
     saveProgress();
   }, [currentLevel, score, lives, streak]);
+
+  // Load progress when component mounts
+  useEffect(() => {
+    const saved = getInitialState();
+    if (saved.lastPlayed) {
+      setCurrentLevel(saved.currentLevel);
+      setScore(saved.score);
+      setLives(saved.lives);
+      setStreak(saved.streak);
+    }
+  }, []);
 
   return {
     currentLevel,
@@ -72,6 +117,7 @@ export const useGameState = () => {
     addScore,
     loseLife,
     incrementStreak,
-    saveProgress
+    saveProgress,
+    gameState
   };
 };

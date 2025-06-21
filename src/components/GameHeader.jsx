@@ -19,7 +19,7 @@ const GameHeader = ({ currentLevel, totalLevels, score, lives, streak }) => {
             <span className="font-bold text-gray-800">{score}</span>
           </div>
           <div className="flex items-center gap-1">
-            {[...Array(3)].map((_, i) => (
+            {[...Array(5)].map((_, i) => (
               <Heart
                 key={i}
                 className={`h-5 w-5 ${i < lives ? 'text-red-500 fill-current' : 'text-gray-300'}`}
